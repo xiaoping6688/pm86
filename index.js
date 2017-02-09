@@ -6,7 +6,7 @@ require("babel-polyfill");
 var debug = require('debug')('PM86');
 var app = require('./server');
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3000);
 // app.set('env', 'production');
 app.set('env', 'debug');
 
