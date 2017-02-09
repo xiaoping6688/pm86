@@ -7,7 +7,6 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const juicerExpressAdapter = require('juicer-express-adapter')
-const enrouten = require('express-enrouten')
 const rewriteModule = require('http-rewrite-middleware')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
@@ -78,7 +77,6 @@ app.use('/service-worker.js', serve('./dist/service-worker.js'))
 // app.use('/manifest.json', serve('./manifest.json'))
 app.use('/dist', serve('./dist'))
 app.use('/public', serve('./public'))
-// app.use(enrouten({directory: 'backend/controllers'}))
 
 app.use(session({
     secret: 'pm86',
@@ -88,7 +86,11 @@ app.use(session({
     cookie: { secure: false, httpOnly: false, maxAge: 120 * 60 * 1000 * 100 }
 }));
 
-app.get('*', (req, res) => {
+app.get('*', (req, res, next) => {
+    if (req.url.indexOf('/api/') === 0) {
+    next()
+    return
+  }
   if (!renderer) {
     return res.end('waiting for compilation... refresh in a moment.')
   }
@@ -132,6 +134,8 @@ app.get('*', (req, res) => {
     console.error(err)
   })
 })
+
+app.use('/api', require('./backend/controllers/api'))
 
 module.exports = app
 

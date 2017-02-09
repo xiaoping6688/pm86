@@ -1,7 +1,7 @@
 /* jshint node: true */
 'use strict';
 
-module.exports = function(router) {
+var exports = function(router) {
     router.route('/').get(function(req, res, next) {
         var _sid =  req.query.SID;
         var url = decodeURIComponent(req.query.continue);

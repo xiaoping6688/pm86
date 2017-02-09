@@ -5,16 +5,13 @@ var models = {};
 
 models.buckets = require('../models/buckets');
 
-module.exports = function(router) {
-    router.get('/', function(req, res) {
-        res.redirect('/buckets');
-    });
+var exports = function(router) {
 
-    router.get('/bucket/create', function(req, res) {
+    router.get('api/v1/bucket/create', function(req, res) {
         res.render('bucket-create', {});
     });
 
-    router.get('/bucket/:bucket/:public_key', function(req, res) {
+    router.get('api/v1/bucket/:bucket/:public_key', function(req, res) {
         res.render('index', {
             servertime: new Date().getTime(),
             uuid: req.session.user.id,
@@ -23,7 +20,7 @@ module.exports = function(router) {
         });
     });
 
-    router.get('/buckets', async function(req, res) {
+    router.get('api/v1/buckets', async function(req, res) {
         var userAllBucketsResult = await models.buckets.getUserAllBucketsByUUID(req.session.user.id);
 
         if(userAllBucketsResult) {
@@ -33,14 +30,14 @@ module.exports = function(router) {
         }
     });
 
-    router.get('/transactions/server/:public_key/:server_name', function(req, res) {
+    router.get('api/v1/transactions/server/:public_key/:server_name', function(req, res) {
         res.render('transactions', {
             public_key: req.params.public_key,
             server_name: req.params.server_name
         });
     });
 
-    router.get('/graph/sunburst/:filename', function(req, res) {
+    router.get('api/v1/graph/sunburst/:filename', function(req, res) {
         res.render('sunburst', {
             filename: req.params.filename
         });
