@@ -1,7 +1,7 @@
 
 const config = {
   host: "http://127.0.0.1",
-  port: "8080"
+  port: "3000"
 }
 const base_url = config.host + ':' + config.port + '/api';
 

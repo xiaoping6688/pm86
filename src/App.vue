@@ -37,14 +37,14 @@ a
   vertical-align middle
 
 .view
-  max-width 800px
+  max-width 90%
   margin 0 auto
   position relative
   
 li
   list-style-type none
 
-div, ul, li, a
+a
   cursor pointer
   
 .border1

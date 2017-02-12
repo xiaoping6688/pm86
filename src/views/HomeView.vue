@@ -5,7 +5,7 @@
       router-link(:to="'/bucket/' + item.uuid")
         p.name Bucket Name:  {{item.bucket_name}}
         p.pub public key: {{item.public_key}}
-        span.command pm86 interact {{item.secret_key}} {{item.secret_key}}
+      span.command pm86 interact {{item.secret_key}} {{item.secret_key}}
 </template>
 
 <script>
@@ -52,5 +52,6 @@ export default {
         color white
         padding 5px 8px
         margin-bottom 30px
+        cursor pointer
         
 </style>
