@@ -46,7 +46,7 @@
             i(v-bind:class="{ 'el-icon-circle-close' : props.row.status !== 'online' }")
         el-table-column(label='CPU', width='80')
           template(scope="scope")
-            span {{scope.row.cpu}}
+            span {{scope.row.cpu}} %
         el-table-column(label='Memory')
           template(scope="scope")
             span {{memory(scope.row.memory)}}
@@ -54,9 +54,10 @@
           template(scope="scope")
             span {{host.logs[scope.$index].length}}
         el-table-column(label='Actions')
-          template(scope='scope')
-            el-button(size='small', @click='handleRestart(scope.$index, scope.row)') Restart
-            el-button(size='small', type='danger', @click='handleReload(scope.$index, scope.row)') Reload
+          template(scope='props')
+            el-button(size='small',  @click='handleExecute(host, props.row.name, "reload", $event)') Reload
+            el-button(size='small', type='danger', @click='handleExecute(host, props.row.name, "restart", $event)') Restart
+            
 </template>
 
 <script>
@@ -217,7 +218,8 @@ export default {
   },
   data () {
     return {
-      hostList: {data: {}}
+      hostList: {data: {}},
+      socket: {}
     }
   },
   methods: {
@@ -237,6 +239,20 @@ export default {
         all += log.message + this.timestampParse(log.at) + "</br>" + log.stack + "</br>"
       })
       return all   
+    },
+    handleExecute (host, process_name, method_name, $event) {
+      console.log(host)
+      console.log(method_name)
+      console.log(process_name)
+      $event.stopPropagation();
+      this.socket.send('execute:-:-:' + JSON.stringify({
+        machine_name: host.server_name,
+        public_key: host.public_key,
+        method_name: method_name,
+        parameters: {
+            name: process_name
+        }
+      }));
     }
   },
   mounted () {
@@ -318,6 +334,7 @@ export default {
     socket.on(channel + ':profiling', function(data) {
       console.log("on profiling")
     });
+    this.$set(this, 'socket', socket)
   }
 }
 </script>
