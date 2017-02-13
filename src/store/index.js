@@ -1,24 +1,56 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { fetchItems, fetchIdsByType, fetchUser , fetchBuckets} from './api'
+import * as api from './api'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    buckets: []
+    buckets: [],
+    isLogin: false,
+    email: ''
   },
 
   actions: {
+    ADD_BUCKET: ({ commit, dispatch, state }, formData) => {
+      return api.addBucket(formData.form)
+        .then(data => {
+          // commit('SET_LOGIN', data.data)
+          // commit('SET_EMAIL', formData.form.email)
+          formData.callback(data.data)
+        })
+    },
     FETCH_BUCKETS: ({ commit, dispatch, state }) => {
-      return fetchBuckets()
+      return api.fetchBuckets()
         .then(data => commit('SET_BUCKETS', data.data.buckets))
-    }
+    },
+    USER_LOGIN: ({ commit, dispatch, state }, formData) => {
+      return api.login(formData.form)
+        .then(data => {
+          commit('SET_LOGIN', data.data)
+          commit('SET_EMAIL', formData.form.email)
+          formData.callback(data.data)
+        })
+    },
+    USER_REGISTER: ({ commit, dispatch, state }, formData) => {
+      return api.register(formData.form)
+        .then(data => {
+          commit('SET_LOGIN', data.data)
+          commit('SET_EMAIL', formData.form.email)
+          formData.callback(data.data)
+        })
+    },
   },
 
   mutations: {
     SET_BUCKETS: (state, buckets) => {
       state.buckets = buckets
+    },
+    SET_LOGIN: (state, data) => {
+      state.isLogin = data.status
+    },
+    SET_EMAIL: (state, email) => {
+      state.email = email
     },
   },
 

@@ -73,9 +73,76 @@ export function timestampParse(timestamp) {
   return moment(date).format("YYYY MM DD hh:mm:ss");
 }
 
-function pluralize (time, label) {
+export function pluralize (time, label) {
   if (time === 1) {
     return time + label
   }
   return time + label + 's'
+}
+
+
+export function cookie(name){    
+ 
+   var cookieArray=document.cookie.split("; "); //得到分割的cookie名值对    
+ 
+   var cookie=new Object();    
+ 
+   for (var i=0;i<cookieArray.length;i++){    
+ 
+      var arr=cookieArray[i].split("=");       //将名和值分开    
+ 
+      if(arr[0]==name)return unescape(arr[1]); //如果是指定的cookie，则返回它的值    
+ 
+   } 
+ 
+   return ""; 
+ 
+} 
+ 
+  
+ 
+export function delCookie(name)//删除cookie
+ 
+{
+ 
+   document.cookie = name+"=;expires="+(new Date(0)).toGMTString();
+ 
+}
+ 
+  
+ 
+export function getCookie(objName){//获取指定名称的cookie的值
+ 
+    var arrStr = document.cookie.split("; ");
+ 
+    for(var i = 0;i < arrStr.length;i ++){
+ 
+        var temp = arrStr[i].split("=");
+ 
+        if(temp[0] == objName) return unescape(temp[1]);
+ 
+   } 
+ 
+}
+ 
+  
+ 
+function addCookie(objName,objValue,objHours){      //添加cookie
+ 
+    var str = objName + "=" + escape(objValue);
+ 
+    if(objHours > 0){                               //为时不设定过期时间，浏览器关闭时cookie自动消失
+ 
+        var date = new Date();
+ 
+        var ms = objHours*3600*1000;
+ 
+        date.setTime(date.getTime() + ms);
+ 
+        str += "; expires=" + date.toGMTString();
+ 
+   }
+ 
+   document.cookie = str;
+ 
 }

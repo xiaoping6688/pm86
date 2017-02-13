@@ -57,12 +57,21 @@
           template(scope='props')
             el-button(size='small',  @click='handleExecute(host, props.row.name, "reload", $event)') Reload
             el-button(size='small', type='danger', @click='handleExecute(host, props.row.name, "restart", $event)') Restart
-            
+
+      .info
+        p.title  INFOMATION
+        p type: {{host.processes[0].versioning.type}}
+        p url: {{host.processes[0].versioning.url}}
+        p branch: {{host.processes[0].versioning.branch}}
+        p remote: {{host.processes[0].versioning.remote}}
+        p update_time: {{host.processes[0].versioning.update_time}}
+        p repo_path: {{host.processes[0].versioning.repo_path}}
+        p revision: {{host.processes[0].versioning.revision}}   
 </template>
 
 <script>
 
-import { timestampParse, memory , uptime, timeSince} from '../filters'
+import { timestampParse, memory , uptime, timeSince, getCookie} from '../filters'
 
 let HostData = function(host, config) {
   Object.defineProperty(this, "_config", {
@@ -261,9 +270,10 @@ export default {
     }
     let __this = this
     let __lags = new Date().getTime()
-    let __public_key = "09c12de337ec42c4"
+    let __public_key = this.$route.params.key
     let socket = new WebSocket('ws://127.0.0.1:9000');
-    let session_id = "t0sYQTlsHjpA3Z7Xla9a2fFqaJqzOPje";
+    let sid = getCookie("connect.sid");
+    let session_id = decodeURIComponent(sid).match(/s\:([^.]+)/im)[1];
     let channel = session_id + ':' + __public_key;
     let ask = function() {
       socket.send('ask:-:-:' + JSON.stringify({

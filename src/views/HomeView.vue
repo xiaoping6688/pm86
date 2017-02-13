@@ -2,10 +2,10 @@
 #home-view
   ul
     li(v-for='item in items').border1
-      router-link(:to="'/bucket/' + item.uuid")
+      router-link(:to="'/bucket/' + item.public_key")
         p.name Bucket Name:  {{item.bucket_name}}
         p.pub public key: {{item.public_key}}
-      span.command pm86 interact {{item.secret_key}} {{item.secret_key}}
+      span.command pm86 interact {{item.secret_key}} {{item.public_key}}
 </template>
 
 <script>
@@ -18,7 +18,6 @@ export default {
     }
   },
   methods: {
-    link (id) {return `/bucket/${id}`}
   },
   mounted () {
     this.$store.dispatch('FETCH_BUCKETS')

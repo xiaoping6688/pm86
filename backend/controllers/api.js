@@ -8,13 +8,53 @@ var models = {};
 
 models.buckets = require('../models/buckets');
 models.transactions = require('../models/transactions');
+models.users = require('../models/users');
 
+router.post('/v1/user/register', async function(req, res) {
+  if (!req.body.password || !req.body.email) {
+    res.json({ status: -1 });
+    return;
+  }
+  var user = await models.users.createUser(req.body);
+  if(user === -1) {
+    res.json({ status: -1 });
+  } else {
+    req.session.user = {
+      "id": user.ops[0]._id
+    };
+    res.json({ status: 0 });
+  }
+});
+
+router.post('/v1/user/login', async function(req, res) {
+  var users = await models.users.getUser(req.body);
+
+  if(users && users.length) {
+    req.session.user = {
+      "id": users[0]._id
+    };
+    res.json({ status: 0 });
+  } else {
+    res.json({ status: -1 });
+  }
+});
+
+router.post('/v1/user/logout', async function(req, res) {
+  if(req.session.user.id) {
+    req.session.user = {};
+    res.json({ status: 0 });
+  } else {
+    res.json({ status: -1 });
+  }
+});
+
+router.post('/v1/user/remove', async function(req, res) {
+  var user = await models.users.removeUser(req.body, req.session.user.id);
+  if(user) res.json({ status: 0 });
+});
 
 router.get('/v1/buckets', async function(req, res) {
-  req.session.user = {
-    "id": "123"
-  }
-  if(!req.session.uuid && !req.query.uuid) {
+  if(!req.session.user) {
     res.json({ status: -1 });
     return;
   }
@@ -23,6 +63,7 @@ router.get('/v1/buckets', async function(req, res) {
 });
 
 router.post('/v1/bucket/create', async function(req, res) {
+
   var createNewBucketResult = await models.buckets.createNewBucket(req.body, req.session.user.id);
 
   if(createNewBucketResult === -1) { // 当前用户下的桶名已经存在

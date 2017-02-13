@@ -19,3 +19,21 @@ const axios = require('axios').create({
 export const fetchBuckets = () => {
   return axios({method: 'get', url: '/v1/buckets/', params: {uuid: "123"}})
 }
+
+export const addBucket = (data) => {
+  return axios({method: 'post', url: '/v1/bucket/create', data: data})
+}
+
+export const login = (data) => {
+  return axios({method: 'post', url: '/v1/user/login', data: data})
+}
+
+export const register = (data) => {
+  return axios({method: 'post', url: '/v1/user/register', data: data})
+}
+
+export const logout = (data) => {
+  return axios({method: 'post', url: '/v1/user/logout', data: data})
+}
+
+

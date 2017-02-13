@@ -69,6 +69,8 @@ async function createNewBucket(bucket, uuid) {
         'bucket_description' : bucket.bucket_description
     };
 
+    console.log(bucketData);
+
     var exist, result;
     var existBucketQuery = {
         'uuid' : String(uuid),
