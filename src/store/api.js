@@ -17,7 +17,7 @@ const axios = require('axios').create({
 
 // 获取数据
 export const fetchBuckets = () => {
-  return axios({method: 'get', url: '/v1/buckets/', params: {uuid: "123"}})
+  return axios({method: 'get', url: '/v1/buckets/'})
 }
 
 export const addBucket = (data) => {
