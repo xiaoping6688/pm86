@@ -1,6 +1,6 @@
 <template lang="pug">
 #bucket-view
-  el-card.box-card
+  el-card.box-card(v-if='Object.keys(hostList.data).length')
     div(v-for='(host, $index) in hostList.data')
 
       p.title {{host.server_name}}
@@ -67,6 +67,7 @@
         p update_time: {{host.processes[0].versioning.update_time}}
         p repo_path: {{host.processes[0].versioning.repo_path}}
         p revision: {{host.processes[0].versioning.revision}}   
+  h1(v-else) 暂时无数据😯 
 </template>
 
 <script>

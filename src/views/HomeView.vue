@@ -1,11 +1,9 @@
 <template lang="pug">
 #home-view
-  ul
-    li(v-for='item in items').border1
-      router-link(:to="'/bucket/' + item.public_key")
-        p.name Bucket Name:  {{item.bucket_name}}
-        p.pub public key: {{item.public_key}}
-      span.command pm86 interact {{item.secret_key}} {{item.public_key}}
+  el-card.box-card.bucket(v-for='item in items')
+    router-link(:to="'/bucket/' + item.public_key")
+      p.name Name:  {{item.bucket_name}}
+    span.command pm86 interact {{item.secret_key}} {{item.public_key}}
 </template>
 
 <script>
@@ -27,30 +25,27 @@ export default {
 
 <style lang="stylus">
 #home-view
-  background-color #fff
+  // background-color #fff
   box-sizing border-box
   
-  ul
-    padding 0
-  
-    li
-      padding 20px
-      position relative
-      margin-top 10px
+  .bucket
+    padding 20px
+    position relative
+    margin-top 10px
+    
+    .name
+      font-size 3rem
+      font-weight bold
       
-      .name
-        font-size 3rem
-        font-weight bold
-        
-      .pub
-        font-size 1.8rem
-      
-      .command
-        background-color #999999
-        border-radius 5px
-        color white
-        padding 5px 8px
-        margin-bottom 30px
-        cursor pointer
+    .pub
+      font-size 1.8rem
+    
+    .command
+      background-color #999999
+      border-radius 5px
+      color white
+      padding 5px 8px
+      margin-bottom 30px
+      cursor text
         
 </style>

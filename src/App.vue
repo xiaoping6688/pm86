@@ -1,8 +1,27 @@
 <template lang="pug">
   #app
+    vheader
     transition(name="fade" mode="out-in")
       router-view.view
 </template>
+
+<script>
+import {getCookie} from './filters'
+import Vheader from './components/Vheader.vue'
+export default {
+  name: 'app',
+  components: {
+    'vheader': Vheader
+  },
+  beforeMount () {
+    const email = getCookie('email')
+    if (email) {
+      this.$store.commit('SET_LOGIN', 0)
+      this.$store.commit('SET_EMAIL', email)
+    }
+  }
+}
+</script>
 
 <style lang="stylus">
 html

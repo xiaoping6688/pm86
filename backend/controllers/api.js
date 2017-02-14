@@ -19,12 +19,17 @@ router.post('/v1/user/register', async function(req, res) {
   if(user === -1) {
     res.json({ status: -1 });
   } else {
+    var userid = user.ops[0]._id;
+    var email = user.ops[0].email;
     req.session.user = {
-      "id": user.ops[0]._id
+      "id": userid
     };
+    res.cookie('email', email, { maxAge: 900000 });
     res.json({ status: 0 });
   }
 });
+
+
 
 router.post('/v1/user/login', async function(req, res) {
   var users = await models.users.getUser(req.body);
@@ -33,6 +38,7 @@ router.post('/v1/user/login', async function(req, res) {
     req.session.user = {
       "id": users[0]._id
     };
+    res.cookie('email', users[0].email, { maxAge: 900000 });
     res.json({ status: 0 });
   } else {
     res.json({ status: -1 });

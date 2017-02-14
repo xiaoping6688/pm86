@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as api from './api'
+import * as $ from '../filters'
 
 Vue.use(Vuex)
 
@@ -27,7 +28,7 @@ const store = new Vuex.Store({
     USER_LOGIN: ({ commit, dispatch, state }, formData) => {
       return api.login(formData.form)
         .then(data => {
-          commit('SET_LOGIN', data.data)
+          commit('SET_LOGIN', data.data.status)
           commit('SET_EMAIL', formData.form.email)
           formData.callback(data.data)
         })
@@ -35,7 +36,7 @@ const store = new Vuex.Store({
     USER_REGISTER: ({ commit, dispatch, state }, formData) => {
       return api.register(formData.form)
         .then(data => {
-          commit('SET_LOGIN', data.data)
+          commit('SET_LOGIN', data.data.status)
           commit('SET_EMAIL', formData.form.email)
           formData.callback(data.data)
         })
@@ -47,7 +48,7 @@ const store = new Vuex.Store({
       state.buckets = buckets
     },
     SET_LOGIN: (state, data) => {
-      state.isLogin = data.status
+      state.isLogin = data === 0 ? true : false;
     },
     SET_EMAIL: (state, email) => {
       state.email = email

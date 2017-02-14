@@ -1,6 +1,5 @@
 <template lang="pug">
 #create-view
-
   el-card.box-card
     el-form.demo-ruleForm(:model='ruleForm', :rules='rules', ref='ruleForm', label-width='100px')
       el-form-item(label='名称', prop='bucket_name')
@@ -48,7 +47,7 @@ export default {
           _this.$store.dispatch("ADD_BUCKET", {
             form: _this.ruleForm,
             callback: (result) => {
-              if (result.status === 0) {_this.$message("创建成功")}
+              if (result.status === 0) {_this.$message("创建成功"); _this.$router.push('/buckets')}
               else {_this.$message("创建失败")}
             }
           })

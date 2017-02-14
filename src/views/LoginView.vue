@@ -68,7 +68,10 @@ export default {
       this.$refs[formName].resetFields()
     }
   },
-  mounted () {
+  beforeMount () {
+    if (this.$store.state.isLogin) {
+      this.$router.push('/buckets')
+    }
   }
 }
 </script>

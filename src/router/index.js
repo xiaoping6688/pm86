@@ -14,6 +14,7 @@ export default new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/', component: LoginView },
+    { path: '/login', component: LoginView },
     { path: '/buckets', component: HomeView },
     { path: '/register', component: RegisterView },
     { path: '/create', component: CreateView },
