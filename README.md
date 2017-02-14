@@ -48,7 +48,6 @@ processes.json 文件, 请把 pm86 替换为实际名称
    * Application configuration section
    */
   "apps" : [
-    // First application
         {
             "name"      : "pm86",
             "max_memory_restart": "300M",
