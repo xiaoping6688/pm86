@@ -65,12 +65,12 @@ export function timeAgo (time) {
 }
 
 export function formatUnix (value) {
-  return moment.unix(value).format("YYYY MM DD hh:mm:ss");
+  return moment.unix(value).format("YYYY / MM / DD H:mm:ss");
 }
 
 export function timestampParse(timestamp) {
   let date = new Date(timestamp)
-  return moment(date).format("YYYY MM DD hh:mm:ss");
+  return moment(date).format("YYYY / MM / DD H:mm:ss");
 }
 
 export function pluralize (time, label) {

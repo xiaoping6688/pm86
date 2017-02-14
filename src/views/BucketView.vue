@@ -58,15 +58,20 @@
             el-button(size='small',  @click='handleExecute(host, props.row.name, "reload", $event)') Reload
             el-button(size='small', type='danger', @click='handleExecute(host, props.row.name, "restart", $event)') Restart
 
-      .info
+      .infos
         p.title  INFOMATION
-        p type: {{host.processes[0].versioning.type}}
-        p url: {{host.processes[0].versioning.url}}
-        p branch: {{host.processes[0].versioning.branch}}
-        p remote: {{host.processes[0].versioning.remote}}
-        p update_time: {{host.processes[0].versioning.update_time}}
-        p repo_path: {{host.processes[0].versioning.repo_path}}
-        p revision: {{host.processes[0].versioning.revision}}   
+        .info(v-for='(process, name) in filterProcesses(host.processes)')
+          p name: {{name}}
+          p type: {{process.versioning.type}}
+          p url: {{process.versioning.url}}
+          p branch: {{process.versioning.branch}}
+          p remote: {{process.versioning.remote}}
+          p update_time: {{timestampParse(process.versioning.update_time)}}
+          p repo_path: {{process.versioning.repo_path}}
+          p revision: {{process.versioning.revision}}  
+          el-button(size='small', type='danger',  @click='handleExecute(host, name, "forward", $event)') Forward
+          el-button(size='small', type='danger', @click='handleExecute(host, name, "backward", $event)') Backward
+          p -----------------------------
   h1(v-else) 暂时无数据😯 
 </template>
 
@@ -249,6 +254,13 @@ export default {
         all += log.message + this.timestampParse(log.at) + "</br>" + log.stack + "</br>"
       })
       return all   
+    },
+    filterProcesses (processes) {
+      let obj = {}
+      processes.forEach((el) => {
+        obj[el.name] = el
+      })
+      return obj
     },
     handleExecute (host, process_name, method_name, $event) {
       console.log(host)
