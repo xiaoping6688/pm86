@@ -31,6 +31,7 @@
     "express-session": "^1.10.4",
     "http-rewrite-middleware": "^0.1.6",
     "juicer-express-adapter": "^0.1.10",
+    "lru-cache": "^4.0.2",
     "moment": "^2.17.1",
     "mongodb": "^2.2.19",
     "morgan": "^1.2.3",

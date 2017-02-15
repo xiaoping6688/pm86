@@ -1,7 +1,15 @@
 
-const config = {
+const isProd = process.env.NODE_ENV === 'production'
+
+let config = {
   host: "http://127.0.0.1",
   port: "3000"
+}
+if (isProd) {
+  config = {
+    host: "http://pm86.geeklabs.vc",
+    port: "3000"
+  }
 }
 const base_url = config.host + ':' + config.port + '/api';
 
