@@ -4,14 +4,16 @@
 
 独立账号管理系统;
 
-可监控 APP 进程信息,;
+可监控应用进程信息,;
 
-可远程控制 reload, restart, forward, backword;
+可远程控制 reload, restart, forward, backward;
 
 ### 文件说明
-> pm86-ci 是命令行工具 代替 pm2
-> pm86-service 是服务端, 负责 websocket 和 tcp 端口相关
-> pm86-cloud 后端 api 界面相关
+> pm86-ci 是命令行工具 代替 pm2;
+
+> pm86-service 是服务端, 负责 websocket 和 tcp 端口相关;
+
+> pm86-cloud 后端 api 界面相关;
 
 
 ### 在本机运行
@@ -67,8 +69,11 @@ processes.json 文件, 请把 pm86 替换为实际名称
 ```
 ### 运行状态
 ![实例列表](http://ww3.sinaimg.cn/large/006tNc79jw1fcq0qjpvjlj31400hhdhd.jpg)
+
 ![进程监控](http://ww2.sinaimg.cn/large/006tNc79jw1fcq0rlo0vaj312c0jugof.jpg)
-![进程控制](http://ww4.sinaimg.cn/large/006tNc79jw1fcq0rw8syej310o0kiq4z.jpg)
+
+![进程控制](http://ww4.sinaimg.cn/large/006tNc79jw1fcqz3ebdxxj30mo09gmyh.jpg)
+
 ### TODO
 1. 报警通知
 
