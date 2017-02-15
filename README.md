@@ -1,5 +1,8 @@
 # PM86
 
+源码参考了 pm25, 摒弃了 angularjs, 采用 vue server side render; 
+开源在 https://github.com/jiakeqi/PM86
+
 **Requires Node.js 6+**
 
 独立账号管理系统;
