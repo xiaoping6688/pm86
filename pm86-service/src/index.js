@@ -38,18 +38,9 @@ app.post('/api/node/verifyPM2', function(req, res) {
     });
 });
 
-var pmx = require('pmx');
 
-pmx.action('hello', function(reply) {
-  reply({ answer : 'world' });
-});
-
-setInterval(function() {
-  // Keep application online
-}, 100);
-
-app.set('port', process.env.PORT || 8000);
-app.set('env', 'development');
+app.set('port', process.env.PORT || 3001);
+app.set('env', process.env.NODE_ENV || 'development');
 app.use(express.static(path.join(process.env.PWD, 'profilings')));
 
 var server = app.listen(app.get('port'), function() {

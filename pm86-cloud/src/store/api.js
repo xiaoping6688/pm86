@@ -1,17 +1,20 @@
 
 const isProd = process.env.NODE_ENV === 'production'
 
+
 let config = {
   host: "http://127.0.0.1",
   port: "3000"
 }
+
+let base_url = config.host + ':' + config.port + '/api';
+
 if (isProd) {
   config = {
-    host: "http://pm86.geeklabs.vc",
-    port: "3000"
+    host: "http://geeklabs.vc",
   }
+  base_url = config.host + '/api';
 }
-const base_url = config.host + ':' + config.port + '/api';
 
 const axios = require('axios').create({
   baseURL: base_url,

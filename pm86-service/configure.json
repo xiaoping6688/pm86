@@ -5,7 +5,7 @@
         "push": "http://127.0.0.1:41624"
     },
     "ports": {
-        "wss": "9000",
+        "wss": "3002",
         "ioswss": "8055"
     },
     "passphrase": "",

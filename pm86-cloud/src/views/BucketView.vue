@@ -283,7 +283,7 @@ export default {
     let __this = this
     let __lags = new Date().getTime()
     let __public_key = this.$route.params.key
-    let socket = new WebSocket('ws://127.0.0.1:9000');
+    let socket = new WebSocket('ws://127.0.0.1:3002');
     let sid = getCookie("connect.sid");
     let session_id = decodeURIComponent(sid).match(/s\:([^.]+)/im)[1];
     let channel = session_id + ':' + __public_key;
