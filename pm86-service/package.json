@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./index"
+    "start": "cross-env NODE_ENV=development  node ./src/index",
+    "dev": "cross-env NODE_ENV=development  nodemon ./src/index"
   },
   "dependencies": {
     "axon": "^2.0.1",
@@ -11,6 +12,7 @@
     "bluebird": "^2.9.24",
     "connect-mongo": "^0.8.0",
     "cors": "^2.7.1",
+    "cross-env": "^3.2.3",
     "express": "^4.13.3",
     "mongodb": "^2.2.22",
     "node-cache": "^3.2.1",

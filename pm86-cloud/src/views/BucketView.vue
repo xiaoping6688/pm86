@@ -77,6 +77,9 @@
 <script>
 
 import { timestampParse, memory , uptime, timeSince, getCookie} from '../filters'
+import config from '../../configure'
+const isProd = process.env.NODE_ENV === 'production'
+let wsaddr = isProd ? config.prod.ws : config.dev.ws
 
 let HostData = function(host, config) {
   Object.defineProperty(this, "_config", {
@@ -283,7 +286,7 @@ export default {
     let __this = this
     let __lags = new Date().getTime()
     let __public_key = this.$route.params.key
-    let socket = new WebSocket('ws://127.0.0.1:3002');
+    let socket = new WebSocket('ws://' + wsaddr);
     let sid = getCookie("connect.sid");
     let session_id = decodeURIComponent(sid).match(/s\:([^.]+)/im)[1];
     let channel = session_id + ':' + __public_key;

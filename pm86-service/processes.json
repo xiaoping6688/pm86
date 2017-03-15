@@ -10,8 +10,8 @@
             "max_memory_restart": "300M",
             "script"    : "src/index.js",
             "log_date_format": "YYYY-MM-DD HH:mm Z",
-            "out_file" : "var/log/pm86-service/out.log",
-            "error_file" : "var/log/pm86-service/error.log",
+            "out_file" : "/var/log/pm86-service/out.log",
+            "error_file" : "/var/log/pm86-service/error.log",
             "instances"  : 4,
             "exec_mode"  : "cluster",
             "env": {

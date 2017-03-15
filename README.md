@@ -11,6 +11,9 @@
 
 可远程控制 reload, restart, forward, backward;
 
+### 生产环境使用
+KEYMETRICS_NODE=pm86root.geeklabs.vc REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact key key
+
 ### 文件说明
 > pm86-ci 是命令行工具 代替 pm2;
 
@@ -40,7 +43,7 @@ $ node index.js
 4.安装命令行工具 (即 pm86-ci)
 $ cnpm install pm86 -g
 $ cd ...yourpath, 创建如下的 processes.json 文件
-$ KEYMETRICS_NODE=127.0.0.1 REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact secret_key public_key
+$ KEYMETRICS_NODE=127.0.0.1 KEYMETRICS_PORT=8000 REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact secret_key public_key
 $ pm86 start processes.json
   打开 http://127.0.0.1:3000/ 进入对应实例 即可看到对应监控项目
 ```

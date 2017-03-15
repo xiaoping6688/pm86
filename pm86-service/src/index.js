@@ -4,10 +4,7 @@ require("babel-polyfill");
 var express = require('express');
 var app = express();
 var config = require('../configure');
-var path = require('path');
-var fs = require('fs');
-var cors = require('cors');
-
+var isDev = process.env.NODE_ENV === 'development';
 // Add headers
 app.use(function (req, res, next) {
 
@@ -28,25 +25,24 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.post('/api/node/verifyPM2', function(req, res) {
-    res.json({
-        endpoints: config.endpoints,
+app.post('/api/node/verifyPM2', function (req, res) {
+    let json = {
+        endpoints: isDev ? config.endpoints.dev : config.endpoints.prod,
         new: false,
         active: true,
         pending: false,
         disabled: false
-    });
+    }
+    console.log(json);
+    res.json(json);
 });
 
-
 app.set('port', process.env.PORT || 3001);
-app.set('env', process.env.NODE_ENV || 'development');
-app.use(express.static(path.join(process.env.PWD, 'profilings')));
 
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), function () {
     require('./ReverseInteractorService.js')
     require("./PullInteractorService.js")
     require("./RealTimeWebSocket.js")
-    
+
     console.info('Express server listening on port ' + server.address().port);
 });

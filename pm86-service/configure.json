@@ -1,8 +1,15 @@
 {
     "endpoints": {
-        "web": "https://127.0.0.1:4438",
-        "reverse": "http://127.0.0.1:43554",
-        "push": "http://127.0.0.1:41624"
+        "dev": {
+            "web": "https://127.0.0.1:4438",
+            "reverse": "http://127.0.0.1:43554",
+            "push": "http://127.0.0.1:41624"
+        },
+        "prod": {
+            "web": "http://pm86root.geeklabs.vc:4438",
+            "reverse": "http://pm86root.geeklabs.vc:43554",
+            "push": "http://pm86root.geeklabs.vc:41624"
+        }
     },
     "ports": {
         "wss": "3002",

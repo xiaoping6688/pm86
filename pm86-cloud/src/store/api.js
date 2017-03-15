@@ -11,7 +11,7 @@ let base_url = config.host + ':' + config.port + '/api';
 
 if (isProd) {
   config = {
-    host: "http://geeklabs.vc",
+    host: "http://pm86.geeklabs.vc",
   }
   base_url = config.host + '/api';
 }
