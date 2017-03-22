@@ -1,0 +1,50 @@
+{
+  "dev": {
+    "ws": "127.0.0.1:3002",
+    "base_url": "http://127.0.0.1:3000/api",
+    "dbpath": "mongodb://127.0.0.1:27017/pm86",
+    "sessiondbpath": "mongodb://127.0.0.1:27017/pm86-session"
+  },
+  "prod": {
+    "ws": "pm86ws.geeklabs.vc",
+    "base_url": "http://pm86.geeklabs.vc/api",
+    "dbpath": "mongodb://127.0.0.1:27017/pm86",
+    "sessiondbpath": "mongodb://127.0.0.1:27017/pm86-session"
+  },
+  "log": {
+    "appenders": [{
+      "layout": {
+        "type":    "pattern",
+        "pattern": "%[%d %-5p %-6c(%x{pid})%] - %m",
+        "tokens":  {
+          "pid": "process.pid"
+        }
+      },
+      "type": "console"
+    }, {
+      "layout": {
+        "type":    "pattern",
+        "pattern": "%d %-5p (%x{pid}) - %m",
+        "tokens":  {
+          "pid": "process.pid"
+        }
+      },
+      "type":     "file",
+      "filename": "log/debug.log",
+      "category": "debug"
+    }, {
+      "layout": {
+        "type":    "pattern",
+        "pattern": "%d %-5p (%x{pid}) - %m",
+        "tokens":  {
+          "pid": "process.pid"
+        }
+      },
+      "type":                 "dateFile",
+      "filename":             "log/access",
+      "category":             "access",
+      "pattern":              "_yyyy-MM-dd.log",
+      "alwaysIncludePattern": true
+    }]
+  }
+}

@@ -4,20 +4,20 @@
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
   "apps" : [
-    // First application
-        {
-            "name"      : "pm86-cloud",
-            "max_memory_restart": "300M",
-            "script"    : "index.js",
-            "log_date_format": "YYYY-MM-DD HH:mm Z",
-            "out_file" : "/var/log/pm86-cloud/out.log",
-            "error_file" : "/var/log/pm86-cloud/error.log",
-            "instances"  : 4,
-            "exec_mode"  : "cluster",
-            "env": {
-                "NODE_ENV": "production"
-            }
-        }
+  // First application
+    {
+      "name":               "pm86-cloud",
+      "max_memory_restart": "300M",
+      "script":             "index.js",
+      "log_date_format":    "YYYY-MM-DD HH:mm Z",
+      "out_file":           "/var/log/pm86-cloud/out.log",
+      "error_file":         "/var/log/pm86-cloud/error.log",
+      "instances":          4,
+      "exec_mode":          "cluster",
+      "env":                {
+          "NODE_ENV": "production"
+      }
+    }
   ],
 
   /**
