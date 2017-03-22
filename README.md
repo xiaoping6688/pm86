@@ -11,13 +11,8 @@
 
 可远程控制 reload, restart, forward, backward;
 
-### 生产环境使用
-KEYMETRICS_NODE=pm86root.geeklabs.vc REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact key key
-
 ### 文件说明
 > pm86-ci 是命令行工具 代替 pm2;
-
-> pm86-service 是服务端, 负责 websocket 和 tcp 端口相关;
 
 > pm86-cloud 后端 api 界面相关;
 
@@ -26,26 +21,25 @@ KEYMETRICS_NODE=pm86root.geeklabs.vc REMOTE_REVERSE_PORT=43554  REMOTE_PORT=4162
 ``` bash
 1. 打开 mongodb
 
-2. 运行 service
-$ cd pm86-service
-$ cnpm install
-$ node src/index.js
-
-2. 运行 cloud
+2. 运行 cloud service
 $ cd pm86-cloud
+$ cp config.simple.json config.json
+# 修改config.json对应配置
 $ cnpm install
-$ node index.js
+$ node server.js
 
 3. 注册账号 生成 secret_key public_key
-  打开 http://127.0.0.1:3000/ 注册
+  打开 http://127.0.0.1:3000/login 注册
   打开 http://127.0.0.1:3000/create 创建实例
   
 4.安装命令行工具 (即 pm86-ci)
 $ cnpm install pm86 -g
-$ cd ...yourpath, 创建如下的 processes.json 文件
+$ cd ...yourpath, 创建下面的 processes.json 文件
+// 本机环境注册
 $ KEYMETRICS_NODE=127.0.0.1 KEYMETRICS_PORT=8000 REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact secret_key public_key
+// 启动服务
 $ pm86 start processes.json
-  打开 http://127.0.0.1:3000/ 进入对应实例 即可看到对应监控项目
+  打开 http://127.0.0.1:3000/buckets 进入对应实例 即可看到对应监控项目
 ```
 
 
