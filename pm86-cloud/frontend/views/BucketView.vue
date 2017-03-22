@@ -328,9 +328,13 @@ export default {
       };
     })();
 
+    console.log(channel);
     socket.on(channel, function(data) {
+      console.log(channel);
+      console.log(data);
       let hostList = __this.hostList.data
       data.forEach(function(host, index) {
+
         if(host === null) { return; }
 
         let server_name = host.data.server_name;
@@ -345,7 +349,8 @@ export default {
         } else {
             hostList[server_name] = new HostData(host);
         }
-
+         console.log("---")
+         console.log(host)
         __this.$set(__this, 'hostList', {data: hostList})
         // Remove HostData While Processes Empty
         if(host.data.status.data.process.length === 0) {
@@ -369,8 +374,12 @@ export default {
   background-color #fff
   box-sizing border-box
 
+ .info p
+    line-height 30px
+
   .title
-    font-size 3rem
+    font-size 2rem
+    padding 20px 0
     font-weight bold
 
   .logs

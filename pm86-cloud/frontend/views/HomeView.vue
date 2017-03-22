@@ -1,7 +1,8 @@
 <template lang="pug">
 #home-view.view
-  el-card.box-card.bucket(v-for='item in items')
-    router-link(:to="'/bucket/' + item.public_key")
+  .bucket(v-for='(item, index) in items')
+    .line(v-if='index !== 0')
+    router-link.link(:to="'/bucket/' + item.public_key")
       p.name Name:  {{item.bucket_name}}
     span.command pm86 interact {{item.secret_key}} {{item.public_key}}
 </template>
@@ -18,27 +19,28 @@ export default {
   methods: {
   },
   mounted () {
-    this.$store.dispatch('FETCH_BUCKETS')
+    this.$store.dispatch('FETCH_BUCKETS', {msg: this.$message})
   }
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 #home-view
-  // background-color #fff
-  box-sizing border-box
+  height auto
+
+  .line
+    width 100%
+    height 1px
+    background-color #DDDDDD
+
 
   .bucket
-    padding 20px
-    position relative
-    margin-top 10px
+    width 50%
+    margin 50px auto
 
     .name
-      font-size 2rem
-      font-weight bold
-
-    .pub
-      font-size 1.8rem
+      padding 40px 0
+      font-size 1.5rem
 
     .command
       background-color #999999
@@ -47,5 +49,6 @@ export default {
       padding 5px 8px
       margin-bottom 10px
       cursor text
+      font-size: 1rem
 
 </style>

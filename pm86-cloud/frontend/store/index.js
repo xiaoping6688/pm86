@@ -19,9 +19,12 @@ const store = new Vuex.Store({
           formData.callback(data)
         })
     },
-    FETCH_BUCKETS: ({ commit, dispatch, state }) => {
+    FETCH_BUCKETS: ({ commit, dispatch, state }, formData) => {
       return api.fetchBuckets()
-        .then(data => commit('SET_BUCKETS', data.data.buckets))
+        .then(data => commit('SET_BUCKETS', data.data.data))
+        .catch((err) => {
+          formData.msg.error(err.toString())
+        })
     },
     USER_LOGIN: ({ commit, dispatch, state }, formData) => {
       return api.login(formData.form).then(data => {

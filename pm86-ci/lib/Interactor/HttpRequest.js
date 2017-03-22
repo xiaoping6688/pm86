@@ -13,7 +13,7 @@ HttpRequest.post = function(opts, cb) {
 
   var options = {
     hostname : opts.url,
-    path     : '/api/node/verifyPM2',
+    path     : '/api/v1/bucket/verify',
     method   : 'POST',
     port     : opts.port,
     headers: {

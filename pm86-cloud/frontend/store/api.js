@@ -18,7 +18,7 @@ const axios = require('axios').create({
 
 // 获取数据
 export const fetchBuckets = () => {
-  return axios({method: 'get', url: '/buckets/'})
+  return axios({method: 'get', url: '/buckets'})
 }
 
 export const addBucket = (data) => {

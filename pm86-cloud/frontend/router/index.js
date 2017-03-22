@@ -18,8 +18,8 @@ const router =  new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/',
-      component: LoginView,
-      meta: {title: `${base}Home`}},
+      component: HomeView,
+      meta: {title: `${base}Buckets`}},
     { path: '/login',
       component: LoginView,
       meta: {title: `${base}Login`}},

@@ -28,7 +28,7 @@ html
 body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size 15px
-  background-color lighten(#eceef1, 30%)
+  background-color lighten(#eceef1, 70%)
   margin 0
   padding-top 55px
   width 100%
@@ -63,6 +63,7 @@ a
   width 70%
   margin 0 auto
   position relative
+  height calc(100% - 60px)
 
 li
   list-style-type none

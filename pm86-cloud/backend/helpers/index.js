@@ -2,7 +2,7 @@ import moment from 'moment';
 import crypto from 'crypto';
 import config from '../../config';
 import log4js from 'log4js';
-
+import cipher from './cipher';
 
 const iv        = '1234567890000000';
 const isProd    = process.env.NODE_ENV === 'production';
@@ -11,13 +11,13 @@ const cryptkey  = crypto.createHash('sha256').update('__tazai_wolf__key').digest
 log4js.configure(config.log, {});
 
 const logger = log4js.getLogger('debug');
-
 logger.setLevel('auto');
 
 module.exports           = logger;
 module.exports.config    = config[isProd ? 'prod' : 'dev'];
 module.exports.isProd    = isProd;
 module.exports.moment    = moment;
+module.exports.cipher    = cipher;
 module.exports.logAccess = log4js.connectLogger(log4js.getLogger('access'), {
   level: 'auto'
 });

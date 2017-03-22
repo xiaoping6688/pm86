@@ -18,11 +18,7 @@ export default class Base {
     const schema = mongoose.Schema(options, {
       versionKey: false,
       toObject:   { virtuals: true },
-      toJSON:     { virtuals: true },
-      timestamps: {
-        createdAt: 'createdAt',
-        updatedAt: 'updatedAt'
-      }
+      toJSON:     { virtuals: true }
     })
 
     addVirtual(schema);
@@ -36,12 +32,9 @@ export default class Base {
   };
 
   // try catch methods
-  async all(query, start, count) {
-    const _count = count || 20;
-    const _start = start || 0;
+  async all(query) {
     try {
       return await this.model.find(query)
-        .limit(_count).skip(_count * _start)
         .select(select).populate(rules).sort({ createdAt: -1 });
     } catch (e) {
       console.error(e);

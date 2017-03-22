@@ -1,5 +1,7 @@
 <template lang="pug">
 #vheader
+  router-link(to='/')
+    img.header-logo(src='http://ohusmobs2.bkt.clouddn.com/2017032214901615403530.png')
   el-menu.el-menu-demo(theme='dark',
                        :default-active='activeIndex',
                        mode='horizontal',
@@ -72,4 +74,7 @@ export default {
 
 .el-menu
   float right
+
+.header-logo
+  height 60px
 </style>

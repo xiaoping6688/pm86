@@ -4,16 +4,21 @@
 import models from '../models'
 import crypto from 'crypto';
 import Base   from './base';
+import $      from '../helpers';
 
 const BucketModel  = models.bucket;
 const prime_length = 60;
 const diffHell     = crypto.createDiffieHellman(prime_length);
+
+
 
 const BucketAPI = new Base({
   model: BucketModel
 });
 
 BucketAPI.methods.create = async function(req, res, next) {
+
+  diffHell.generateKeys('base64');
   const secret_key = diffHell.getPrivateKey('hex');
   const public_key = diffHell.getPublicKey('hex');
   const bucketData = {
@@ -23,15 +28,31 @@ BucketAPI.methods.create = async function(req, res, next) {
     'bucket_name':        req.body.bucket_name,
     'bucket_description': req.body.bucket_description
   };
-  let user = await User.find({
-    'email': req.body.email
+  const bucket = await BucketModel.create(bucketData);
+  $.result(res, bucket);
+}
+
+
+BucketAPI.methods.verify = async function (req, res) {
+  $.debug(req.body);
+  // const bucket = await BucketModel.find(req.body);
+  // if ($.empty(bucket)) {
+  //   res.json({
+  //     endpoints: {},
+  //     new: false,
+  //     active: false,
+  //     pending: false,
+  //     disabled: false
+  //   });
+  //   return;
+  // }
+  res.json({
+    endpoints: $.config.endpoints,
+    new: false,
+    active: true,
+    pending: false,
+    disabled: false
   });
-  if (user) {
-    return $.result('email error');
-  }
-  user = await User.create(req.body);
-  req.session.user = user;
-  $.result(user);
 }
 
 module.exports = BucketAPI.methods

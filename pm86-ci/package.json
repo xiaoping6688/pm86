@@ -1,7 +1,7 @@
 {
   "name": "pm86",
   "preferGlobal": "true",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "engines": {
     "node": ">=0.10"
   },
@@ -27,7 +27,7 @@
       "email": "jk77.me@gmail.com"
     }
   ],
-  "homepage": "https://github.com/jiakeqi/pm86",
+  "homepage": "https://github.com/ericjjj/PM86",
   "description": "Production process manager for Node.JS applications with a built-in load balancer.",
   "main": "index.js",
   "scripts": {
@@ -74,8 +74,8 @@
     "dev ops"
   ],
   "bin": {
-    "pm86": "./bin/pm2",
-    "pm86-dev": "./bin/pm2-dev"
+    "PM86": "./bin/pm2",
+    "PM86-dev": "./bin/pm2-dev"
   },
   "dependencies": {
     "async": "1.2.1",
@@ -116,11 +116,11 @@
     "ikt": "git+http://ikt.pm2.io/ikt.git#master"
   },
   "bugs": {
-    "url": "https://github.com/jiakeqi/pm86/issues"
+    "url": "https://github.com/ericjjj/PM86/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jiakeqi/pm86.git"
+    "url": "git://github.com/ericjjj/PM86.git"
   },
   "license": "AGPL-3.0"
 }

@@ -17,5 +17,6 @@ router.post('/account/delete', controllers.account.delete);
 router.get('/buckets', controllers.bucket.all);
 router.post('/bucket/create', controllers.bucket.create);
 router.post('/bucket/delete', controllers.bucket.delete);
+router.post('/bucket/verify', controllers.bucket.verify);
 
 module.exports = router

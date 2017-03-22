@@ -1,7 +1,5 @@
 
-var crypto = require('crypto');
-var Cipher = module.exports = {};
-
+const crypto           = require('crypto');
 const CIPHER_ALGORITHM = 'aes256';
 
 /**
@@ -11,7 +9,7 @@ const CIPHER_ALGORITHM = 'aes256';
  * @return ret
  */
 
-Cipher.decipherMessage = function (msg, key) {
+module.exports.decipherMessage = function (msg, key) {
     var ret = {};
 
     try {
@@ -21,13 +19,13 @@ Cipher.decipherMessage = function (msg, key) {
         // console.log(typeof decipheredMessage);
         // preserve newlines, etc - use valid JSON
         decipheredMessage = decipheredMessage.replace(/\\n/g, "\\n")
-            .replace(/\\'/g, "\\'")
-            .replace(/\\"/g, '\\"')
-            .replace(/\\&/g, "\\&")
-            .replace(/\\r/g, "\\r")
-            .replace(/\\t/g, "\\t")
-            .replace(/\\b/g, "\\b")
-            .replace(/\\f/g, "\\f");
+        .replace(/\\'/g, "\\'")
+        .replace(/\\"/g, '\\"')
+        .replace(/\\&/g, "\\&")
+        .replace(/\\r/g, "\\r")
+        .replace(/\\t/g, "\\t")
+        .replace(/\\b/g, "\\b")
+        .replace(/\\f/g, "\\f");
         // remove non-printable and other non-valid JSON chars
         decipheredMessage = decipheredMessage.replace(/[\u0000-\u0019]+/g, "");
         ret = JSON.parse(decipheredMessage);
@@ -49,7 +47,7 @@ Cipher.decipherMessage = function (msg, key) {
  * @return
  */
 
-Cipher.cipherMessage = function (data, key) {
+module.exports.cipherMessage = function (data, key) {
     try {
         var cipher = crypto.createCipher(CIPHER_ALGORITHM, key);
         var cipheredData = cipher.update(data, "binary", "hex");

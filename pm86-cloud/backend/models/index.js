@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import $        from '../helpers';
 import user     from './user';
 import bucket   from './bucket';
+import status   from './status';
 const dbpath    = $.config.dbpath;
 
 module.exports.connect = function () {
@@ -22,3 +23,4 @@ module.exports.connect = function () {
 
 module.exports.bucket = bucket;
 module.exports.user   = user;
+module.exports.status = status;

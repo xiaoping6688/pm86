@@ -15,14 +15,14 @@
     }
   },
   "prod": {
-    "ws":            "pm86ws.geeklabs.vc",
-    "base_url":      "http://pm86.geeklabs.vc/api",
+    "ws":            "pm86ws.xxxx.com",
+    "base_url":      "http://pm86.xxxx.com/api",
     "dbpath":        "mongodb://127.0.0.1:27017/pm86",
     "sessiondbpath": "mongodb://127.0.0.1:27017/pm86-session",
     "endpoints":     {
-      "web":     "http://pm86root.geeklabs.vc:4438",
-      "reverse": "http://pm86root.geeklabs.vc:43554",
-      "push":    "http://pm86root.geeklabs.vc:41624"
+      "web":     "http://pm86root.xxxx.com:4438",
+      "reverse": "http://pm86root.xxxx.com:43554",
+      "push":    "http://pm86root.xxxx.com:41624"
     },
     "ports": {
       "wss":    "3002",
