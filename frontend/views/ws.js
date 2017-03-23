@@ -143,7 +143,7 @@ ProcessData.prototype._map = function(data) {
   }.bind(this));
 };
 
-import config from '../../config'
+import config from '../../config.json'
 import {timestampParse, memory , uptime, timeSince, getCookie} from '../filters'
 const isProd = process.env.NODE_ENV === 'production'
 let wsaddr = isProd ? config.prod.ws : config.dev.ws
