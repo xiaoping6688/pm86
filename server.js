@@ -44,7 +44,7 @@ app.use(session({
     cookie: { secure: false, httpOnly: false, maxAge: 120 * 60 * 1000 * 100 }
 }));
 
-app.use('/dist',   require('./ssr')(app));
+require('./ssr')(app);
 app.use('/api/v1', require('./backend/routers'));
 app.set('port',    process.env.PORT || 3000);
 models.connect();
