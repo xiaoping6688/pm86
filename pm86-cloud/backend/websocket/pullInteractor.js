@@ -9,8 +9,32 @@ const req         = axon.socket('req');
 const models      = require('../models');
 const StatusModel = models.status;
 const BucketModel = models.bucket;
+const UserModel   = models.user;
 const Cipher      = $.cipher;
 const rpcClient   = new rpc.Client(req);
+
+
+async function sendEmail (msg, secret_key) {
+  const bucket = await BucketModel.find({
+    public_key: msg.public_key,
+    secret_key: secret_key
+  });
+  const exception = msg.data["process:exception"][0];
+  const stack = exception.data.stack.replace(/\s+/g,"");
+  const date = $.dateformat(exception.at);
+  const html = `<p>${date}</p>
+                <p>${exception.process.name}</p>
+                <p>${exception.process.server}</p>
+                <p>${exception.process.rev}</p>
+                <p>${stack}</p>`
+
+  $.debug(`Error in ${bucket.user.email}`);
+  $.sendEmail({
+    subject: `${date} Process:exception: ${msg.data.server_name}`,
+    to: bucket.user.email,
+    text: html
+  })
+}
 
 async function insertProcess(msg, secret_key) {
 
@@ -37,6 +61,7 @@ async function insertProcess(msg, secret_key) {
 
     // 从数据中剥离进程异常信息插入到独立的Collection
     if (msg.data.hasOwnProperty('process:exception')) {
+        await sendEmail(msg, secret_key);
         insertExtendInfo(msg.data['process:exception'], msg.public_key, msg.data.server_name, 'exceptions', 'exception');
     }
 

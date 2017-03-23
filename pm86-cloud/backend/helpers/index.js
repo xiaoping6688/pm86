@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import config from '../../config';
 import log4js from 'log4js';
 import cipher from './cipher';
+import email  from  './email';
 
 const iv        = '1234567890000000';
 const isProd    = process.env.NODE_ENV === 'production';
@@ -21,6 +22,18 @@ module.exports.cipher    = cipher;
 module.exports.logAccess = log4js.connectLogger(log4js.getLogger('access'), {
   level: 'auto'
 });
+
+module.exports.sendEmail = (data) => {
+  return new Promise((resolve, inject) => {
+    email(data, function(err, msg) {
+      if (err) {
+        inject(err);
+      } else {
+        resolve(msg);
+      }
+    })
+  });
+}
 
 module.exports.decode = ( secretdata) => {
     let

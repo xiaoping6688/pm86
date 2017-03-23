@@ -1,24 +1,42 @@
 # PM86
 
-源码参考了 pm25, 摒弃了 angularjs, 采用 vue server side render; 
-开源在 https://github.com/ericjjj/PM86
+## 说明
+  - pm86-ci 命令行工具, 兼容 PM2
 
+  - pm86-cloud SSR, API
+
+  - Vue 2.0 SSR 管理界面, Webscoket 数据传输
+
+  - [完全开源](https://github.com/ericjjj/PM86), 可部署在私有服务器, 利用 SSR 开发监控 APP
+
+
+## 功能
+- [x] Element UI
+- [x] 独立账号管理系统
+- [x] 监控应用进程信息
+- [x] 远程控制进程 Reload, Restart, Rorward, Backward
+- [x] 邮件报警通知
+- [ ] 移动端 APP
+- [ ] 路由监听
+
+
+## Demo Pic
+
+![Login](http://ohusmobs2.bkt.clouddn.com/20170323149025368139834.png)
+
+![Buckets](http://ohusmobs2.bkt.clouddn.com/2017032314902537029509.png)
+
+![Bucket](http://ohusmobs2.bkt.clouddn.com/20170323149025373745286.png)
+
+![Bucket](http://ohusmobs2.bkt.clouddn.com/2017032314902537439632.png)
+
+
+
+
+## 运行
 **Requires Node.js 6+**
 
-独立账号管理系统;
-
-可监控应用进程信息,;
-
-可远程控制 reload, restart, forward, backward;
-
-### 文件说明
-> pm86-ci 是命令行工具 代替 pm2;
-
-> pm86-cloud 后端 api 界面相关;
-
-
-### 在本机运行
-``` bash
+``` shell
 1. 打开 mongodb
 
 2. 运行 cloud service
@@ -31,19 +49,33 @@ $ node server.js
 3. 注册账号 生成 secret_key public_key
   打开 http://127.0.0.1:3000/login 注册
   打开 http://127.0.0.1:3000/create 创建实例
-  
+
 4.安装命令行工具 (即 pm86-ci)
 $ cnpm install pm86 -g
-$ cd ...yourpath, 创建下面的 processes.json 文件
+$ cd your-project-path, 创建下面的 processes.json 文件
 // 本机环境注册
-$ KEYMETRICS_NODE=127.0.0.1 KEYMETRICS_PORT=8000 REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact secret_key public_key
+$ KEYMETRICS_NODE=127.0.0.1 KEYMETRICS_PORT=3000 REMOTE_REVERSE_PORT=43554  REMOTE_PORT=41624 pm86 interact secret_key public_key
 // 启动服务
 $ pm86 start processes.json
   打开 http://127.0.0.1:3000/buckets 进入对应实例 即可看到对应监控项目
 ```
 
+## 部署
+
+``` shell
+1. 打包
+$ npm run build
+
+2. 配置 nginx 代理
+
+3. 修改 config
+
+4 pm86 start processes.json
+```
+
 
 processes.json 文件, 请把 pm86 替换为实际名称
+
 ``` json
 
   /**
@@ -67,15 +99,5 @@ processes.json 文件, 请把 pm86 替换为实际名称
 }
 
 ```
-### 运行状态
-![实例列表](http://ww3.sinaimg.cn/large/006tNc79jw1fcq0qjpvjlj31400hhdhd.jpg)
-
-![进程监控](http://ww2.sinaimg.cn/large/006tNc79jw1fcq0rlo0vaj312c0jugof.jpg)
-
-![进程控制](http://ww4.sinaimg.cn/large/006tNc79jw1fcqz3ebdxxj30mo09gmyh.jpg)
-
-### TODO
-1. 报警通知
-
 
 
