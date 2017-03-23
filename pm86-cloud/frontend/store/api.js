@@ -16,6 +16,15 @@ const axios = require('axios').create({
   }],
 });
 
+export const get = function (url) {
+  return axios.get(url)
+}
+
+// 新建数据
+export const post = function (info) {
+  return axios.post(`/${info.url}`, info.data);
+}
+
 // 获取数据
 export const fetchBuckets = () => {
   return axios({method: 'get', url: '/buckets'})

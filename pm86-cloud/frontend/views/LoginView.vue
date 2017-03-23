@@ -55,6 +55,7 @@ export default {
             form: _this.ruleForm,
             msg: _this.$message,
             callback: (result) => {
+              localStorage.setItem('email', result.data.data.email);
               _this.$message.success("登陆成功")
               _this.$router.push('/buckets')
             }
@@ -70,9 +71,6 @@ export default {
     }
   },
   beforeMount () {
-    if (this.$store.state.isLogin) {
-      // this.$router.push('/buckets')
-    }
   }
 }
 </script>
@@ -84,7 +82,7 @@ export default {
 .login-wrap{
   position: relative;
   width:100%;
-  height:100%;
+  height:calc(100% - 60px);
   background: #324157;
   z-index: 10;
   text-align: center;

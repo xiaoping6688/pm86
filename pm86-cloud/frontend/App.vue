@@ -10,11 +10,6 @@ import {getCookie} from './filters'
 export default {
   name: 'app',
   beforeMount () {
-    const email = getCookie('email')
-    if (email) {
-      this.$store.commit('SET_LOGIN', 0)
-      this.$store.commit('SET_EMAIL', email)
-    }
   }
 }
 </script>
@@ -40,6 +35,11 @@ body
 #app
   width 100%
   height 100%
+
+.line
+  width 100%
+  height 1px
+  background-color #DDDDDD
 
 a
   color #34495e

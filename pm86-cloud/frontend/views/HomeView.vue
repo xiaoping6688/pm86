@@ -5,6 +5,7 @@
     router-link.link(:to="'/bucket/' + item.public_key")
       p.name Name:  {{item.bucket_name}}
     span.command pm86 interact {{item.secret_key}} {{item.public_key}}
+  h1.warn(v-if='items.length === 0') 暂时还有没创建哦😯
 </template>
 
 <script>
@@ -28,11 +29,9 @@ export default {
 #home-view
   height auto
 
-  .line
-    width 100%
-    height 1px
-    background-color #DDDDDD
-
+  .warn
+    text-align center
+    margin-top 200px
 
   .bucket
     width 50%

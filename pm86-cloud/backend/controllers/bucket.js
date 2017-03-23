@@ -16,8 +16,14 @@ const BucketAPI = new Base({
   model: BucketModel
 });
 
-BucketAPI.methods.create = async function(req, res, next) {
+BucketAPI.methods.all = async function(req, res, next) {
+  if ($.empty(req.session.user)) {return $.result(res, []);}
+  const bucket = await BucketModel.all({'user': req.session.user._id});
+  $.result(res, bucket);
+}
 
+BucketAPI.methods.create = async function(req, res, next) {
+  if ($.empty(req.session.user)) {return $.result(res, []);}
   diffHell.generateKeys('base64');
   const secret_key = diffHell.getPrivateKey('hex');
   const public_key = diffHell.getPublicKey('hex');

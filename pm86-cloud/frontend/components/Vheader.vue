@@ -1,7 +1,7 @@
 <template lang="pug">
 #vheader
   router-link(to='/')
-    img.header-logo(src='http://ohusmobs2.bkt.clouddn.com/2017032214901615403530.png')
+    img.header-logo(src='http://ohusmobs2.bkt.clouddn.com/20170323149024023196292.png')
   el-menu.el-menu-demo(theme='dark',
                        :default-active='activeIndex',
                        mode='horizontal',
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+
+import * as api from '../store/api'
 
 export default {
   name: 'vheader',
@@ -37,6 +39,7 @@ export default {
       console.log(key, keyPath);
     },
     handleSelect(key, keyPath) {
+      console.log(key, keyPath);
       if (key === 'logout') {
         const _this = this
         api.post({
@@ -44,18 +47,15 @@ export default {
           data: {}
         }).then((result) => {
           console.log(result);
-          if (result.status === 200) {
             localStorage.setItem('email', null);
             localStorage.setItem('user', null);
             _this.$router.push('/login');
-          }
         }).catch((err) => {
           console.log(err);
         })
       } else {
         this.$router.push(`/${key}`)
       }
-      console.log(key, keyPath);
     }
   },
   beforeMount () {

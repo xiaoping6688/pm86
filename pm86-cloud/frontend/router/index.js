@@ -38,8 +38,16 @@ const router =  new Router({
   ]
 })
 
+
+
 router.beforeEach((to, from, next) => {
+
   if (inBrowser) {
+    const email = localStorage.getItem('email')
+    if (email === 'null' && to.path !== '/login' && to.path !== '/register') {
+      location.href='/login'
+      return;
+    }
     document.title = to.meta.title
   }
   next()
