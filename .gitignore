@@ -1,7 +1,9 @@
 .DS_Store
 node_modules/
 dist/
+log/
 npm-debug.log
+config.json
 pm86-cloud/var
 .idea
 *.iml

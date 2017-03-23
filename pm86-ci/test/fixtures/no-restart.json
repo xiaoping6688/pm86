@@ -1,7 +1,0 @@
-[
-  {
-    "name"        : "no_restart",
-    "script"      : "./killtoofast.js",
-    "autorestart" : false
-  }
-]
