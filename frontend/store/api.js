@@ -1,5 +1,5 @@
 
-import config from '../../config'
+import config from '../../config.json'
 import Vue from 'vue'
 const isProd = process.env.NODE_ENV === 'production'
 
