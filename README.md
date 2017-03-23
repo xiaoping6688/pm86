@@ -30,6 +30,9 @@
 
 ![Bucket](http://ohusmobs2.bkt.clouddn.com/2017032314902537439632.png)
 
+email 通知
+![email](http://ohusmobs2.bkt.clouddn.com/20170323149025516183982.png)
+
 
 
 
