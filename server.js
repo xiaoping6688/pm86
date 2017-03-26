@@ -2,22 +2,23 @@
 'use strict';
 require('babel-core/register');
 require("babel-polyfill");
-const express              = require('express')
-const favicon              = require('serve-favicon')
-const logger               = require('morgan')
+
+const express              = require('express');
+const favicon              = require('serve-favicon');
+const logger               = require('morgan');
 const debug                = require('debug')('PM86');
-const cookieParser         = require('cookie-parser')
-const bodyParser           = require('body-parser')
-const juicerExpressAdapter = require('juicer-express-adapter')
-const rewriteModule        = require('http-rewrite-middleware')
-const session              = require('express-session')
-const MongoStore           = require('connect-mongo')(session)
-const compression          = require('compression')
-const config               = require('./config')
-const rewriteMiddleware    = rewriteModule.getMiddleware([])
-const app                  = express()
-const $                    = require('./backend/helpers/')
-const models               = require('./backend/models/')
+const cookieParser         = require('cookie-parser');
+const bodyParser           = require('body-parser');
+const juicerExpressAdapter = require('juicer-express-adapter');
+const rewriteModule        = require('http-rewrite-middleware');
+const session              = require('express-session');
+const MongoStore           = require('connect-mongo')(session);
+const compression          = require('compression');
+const config               = require('./config');
+const rewriteMiddleware    = rewriteModule.getMiddleware([]);
+const app                  = express();
+const $                    = require('./backend/helpers/');
+const models               = require('./backend/models/');
 
 // Add headers
 app.use(function (req, res, next) {
@@ -33,8 +34,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(rewriteMiddleware);
-app.use(compression({ threshold: 0 }))
-app.use(favicon('./public/logo.png'))
+app.use(compression({ threshold: 0 }));
+app.use(favicon('./public/logo.png'));
 
 app.use(session({
     secret: 'pm86',

@@ -1,5 +1,6 @@
 {
   "dev": {
+    "secret":        "", // length: 16
     "ws":            "127.0.0.1:3002",
     "base_url":      "http://127.0.0.1:3000/api",
     "dbpath":        "mongodb://127.0.0.1:27017/pm86",
@@ -15,6 +16,7 @@
     }
   },
   "prod": { // 自行配置反向代理
+    "secret":        "", // length: 16
     "ws":            "pm86ws.xxxx.com",
     "base_url":      "http://pm86.xxxx.com/api",
     "dbpath":        "mongodb://127.0.0.1:27017/pm86",
