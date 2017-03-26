@@ -4,10 +4,11 @@ import config from '../../config';
 import log4js from 'log4js';
 import cipher from './cipher';
 import email  from  './email';
+import auth   from  './auth';
 
-const iv        = '1234567890000000';
 const isProd    = process.env.NODE_ENV === 'production';
 const cryptkey  = crypto.createHash('sha256').update('__tazai_wolf__key').digest();
+const iv        = config[isProd ? 'prod' : 'dev'].secret;
 
 log4js.configure(config.log, {});
 
@@ -19,6 +20,7 @@ module.exports.config    = config[isProd ? 'prod' : 'dev'];
 module.exports.isProd    = isProd;
 module.exports.moment    = moment;
 module.exports.cipher    = cipher;
+module.exports.auth      = auth;
 module.exports.logAccess = log4js.connectLogger(log4js.getLogger('access'), {
   level: 'auto'
 });
