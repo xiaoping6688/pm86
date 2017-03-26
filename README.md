@@ -27,7 +27,7 @@
 
 ![Login](http://ohusmobs2.bkt.clouddn.com/20170323149025368139834.png)
 
-![Buckets](http://ohusmobs2.bkt.clouddn.com/2017032314902537029509.png)
+![Buckets](http://ohusmobs2.bkt.clouddn.com/2017032714905445717484.png)
 
 ![Bucket](http://ohusmobs2.bkt.clouddn.com/20170323149025373745286.png)
 
