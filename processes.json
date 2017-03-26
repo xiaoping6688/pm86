@@ -32,7 +32,7 @@
         "port": "333"
       }],
       "ref"  : "origin/master",
-      "repo" : "git@github.com:pm86.git",
+      "repo" : "https://github.com/ericjjj/pm86.git",
       "path" : "/home/eric/pm86",
       "post-deploy" : "npm install && npm run build && pm2 startOrRestart processes.json --env production"
     },
