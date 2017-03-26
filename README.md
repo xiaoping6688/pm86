@@ -33,6 +33,9 @@
 
 ![Bucket](http://ohusmobs2.bkt.clouddn.com/2017032314902537439632.png)
 
+激活邮件
+![激活](http://ohusmobs2.bkt.clouddn.com/2017032714905443908633.png)
+
 email 通知
 ![email](http://ohusmobs2.bkt.clouddn.com/20170323149025516183982.png)
 
