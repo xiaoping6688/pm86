@@ -10,19 +10,18 @@
 
   - Vue 2.0 SSR 管理界面, Webscoket 数据传输
 
-  - [完全开源, 地址](https://github.com/ericjjj/PM86), 可部署在私有服务器, 利用 SSR 开发监控 APP
+  - [完全开源, 地址](https://github.com/ericjjj/PM86), 可部署在私有服务器, 利用 API 开发移动端监控 APP
 
 
 ## 功能
 - [x] Element UI
+- [x] 与 PM2 接口兼容
 - [x] 独立账号管理系统
 - [x] 监控应用进程信息
 - [x] 远程控制进程 Reload, Restart, Rorward, Backward
 - [x] 邮件报警通知
 - [ ] 移动端 APP
-- [ ] 路由监听
-
-
+- [ ] 慢路由
 ## Demo Pic
 
 ![Login](http://ohusmobs2.bkt.clouddn.com/20170323149025368139834.png)
