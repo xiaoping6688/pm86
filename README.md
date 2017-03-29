@@ -1,5 +1,10 @@
 # PM86
 
+[![npm version](https://badge.fury.io/js/pm86.svg)](https://badge.fury.io/js/pm86)
+[![Package Quality](http://npm.packagequality.com/badge/pm86.png)](http://packagequality.com/#?package=pm86)
+[![npm](https://img.shields.io/npm/dt/pm86.svg)](https://www.npmjs.com/package/pm86)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
 ## 起源
   因为公司准备统一部署 监控等流程, 需要一个完善的工具做这些事情, 所以就有了这个项目的诞生, V1 做的比较粗糙, 经过了一段时间闲置, 又进行了打磨, 改进, 接下来会持续更新, 作为主要项目来维护, 谢谢, 如果在使用过程中遇到问题,  请联系我 github@ericjj.com
 
