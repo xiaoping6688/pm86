@@ -25,7 +25,7 @@ async function askHandler(data) {
     let publicKey          = data.public_key;
     let sessionId          = data.session_id;
     let channelName        = sessionId + ':' + publicKey;
-    $.deubg(channelName);
+    $.debug(channelName);
     let bucket_ret = await BucketModel.find({'public_key': publicKey});
     let hosts = [], results = [];
     let public_key, secret_key, doc;
