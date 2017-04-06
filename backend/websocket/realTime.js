@@ -58,7 +58,7 @@ async function askHandler(data) {
                 return ele !== null;
             });
             socket._emit(channelName, results);
-            $.debug(channelName)
+            $.debug(results);
         }
     });
 }
