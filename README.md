@@ -76,7 +76,7 @@ $ pm86 start processes.json
 ```
 
 ## 部署
-
+如果设置了 ufw 等防火墙, 需要开放的端口有: 3000, 3002, 8080. 43554, 43555, 43666
 ``` shell
 1. 打包
 $ npm run build
