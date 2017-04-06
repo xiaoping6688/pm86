@@ -164,7 +164,7 @@ export default (__this) => {
   };
 
   socket.onopen = function () {
-    connection.send('Ping'); // Send the message 'Ping' to the server
+    console.log('Ping'); // Send the message 'Ping' to the server
     setTimeout(ask, 1000);
   };
 
