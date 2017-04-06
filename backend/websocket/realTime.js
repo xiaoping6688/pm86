@@ -41,7 +41,7 @@ async function askHandler(data) {
             hosts.push(el.data.server_name);
         }
     })
-    $.deubg(hosts);
+    $.debug(hosts);
     hosts.forEach(async function(item, index, arr, doc = undefined, process_exception = undefined) {
         doc = await StatusModel.all({
             'data.server_name': item,
