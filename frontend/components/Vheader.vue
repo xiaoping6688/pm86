@@ -53,7 +53,7 @@ export default {
   }
 }
 
-function logout () {
+function logout (_this) {
   api.post({
     url: 'account/logout',
     data: {}
