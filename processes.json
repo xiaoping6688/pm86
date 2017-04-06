@@ -36,6 +36,17 @@
       "path" : "/home/eric/pm86",
       "post-deploy" : "yarn install && npm run build && pm2 startOrRestart processes.json --env production"
     },
+    "develop" : {
+      "user" : "eric",
+      "host" :[{
+        "host" : "45.77.16.126",
+        "port": "333"
+      }],
+      "ref"  : "origin/develop",
+      "repo" : "https://github.com/ericjjj/pm86.git",
+      "path" : "/home/eric/pm86",
+      "post-deploy" : "yarn install && npm run build && pm2 startOrRestart processes.json --env production"
+    },
     "dev" : {
       "user" : "node",
       "host" : "212.83.163.1",
