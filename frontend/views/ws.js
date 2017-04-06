@@ -155,6 +155,9 @@ export default (__this) => {
   let sid = getCookie("connect.sid");
   let session_id = decodeURIComponent(sid).match(/s\:([^.]+)/im)[1];
   let channel = session_id + ':' + __public_key;
+  console.log(socket);
+  console.log(session_id);
+  console.log(__public_key);
   let ask = function() {
     socket.send('ask:-:-:' + JSON.stringify({
       t: new Date().getTime() - __lags,
