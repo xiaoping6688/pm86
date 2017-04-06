@@ -1,5 +1,12 @@
 # PM86
 
+[![npm version](https://badge.fury.io/js/pm86.svg)](https://badge.fury.io/js/pm86)
+[![Code Climate](https://codeclimate.com/github/ericjjj/pm86/badges/gpa.svg)](https://codeclimate.com/github/ericjjj/pm86)
+[![Issue Count](https://codeclimate.com/github/ericjjj/pm86/badges/issue_count.svg)](https://codeclimate.com/github/ericjjj/pm86)
+[![Package Quality](http://npm.packagequality.com/shield/pm86.svg)](http://packagequality.com/#?package=pm86)
+[![npm](https://img.shields.io/npm/dt/pm86.svg)](https://www.npmjs.com/package/pm86)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
 ## 起源
   因为公司准备统一部署 监控等流程, 需要一个完善的工具做这些事情, 所以就有了这个项目的诞生, V1 做的比较粗糙, 经过了一段时间闲置, 又进行了打磨, 改进, 接下来会持续更新, 作为主要项目来维护, 谢谢, 如果在使用过程中遇到问题,  请联系我 github@ericjj.com
 
@@ -10,28 +17,30 @@
 
   - Vue 2.0 SSR 管理界面, Webscoket 数据传输
 
-  - [完全开源, 地址](https://github.com/ericjjj/PM86), 可部署在私有服务器, 利用 SSR 开发监控 APP
+  - [完全开源, 地址](https://github.com/ericjjj/PM86), 可部署在私有服务器, 利用 API 开发移动端监控 APP
 
 
 ## 功能
 - [x] Element UI
+- [x] 与 PM2 接口兼容
 - [x] 独立账号管理系统
 - [x] 监控应用进程信息
 - [x] 远程控制进程 Reload, Restart, Rorward, Backward
 - [x] 邮件报警通知
 - [ ] 移动端 APP
-- [ ] 路由监听
-
-
+- [ ] 慢路由
 ## Demo Pic
 
 ![Login](http://ohusmobs2.bkt.clouddn.com/20170323149025368139834.png)
 
-![Buckets](http://ohusmobs2.bkt.clouddn.com/2017032314902537029509.png)
+![Buckets](http://ohusmobs2.bkt.clouddn.com/2017032714905445717484.png)
 
 ![Bucket](http://ohusmobs2.bkt.clouddn.com/20170323149025373745286.png)
 
 ![Bucket](http://ohusmobs2.bkt.clouddn.com/2017032314902537439632.png)
+
+激活邮件
+![激活](http://ohusmobs2.bkt.clouddn.com/2017032714905443908633.png)
 
 email 通知
 ![email](http://ohusmobs2.bkt.clouddn.com/20170323149025516183982.png)
