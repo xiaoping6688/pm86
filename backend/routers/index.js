@@ -26,6 +26,6 @@ router.put('/authcode',  controllers.authCode.create);
 router.get('/buckets',          authSession, controllers.bucket.all);
 router.put('/bucket/create',    authSession, controllers.bucket.create);
 router.delete('/bucket/delete', authSession, controllers.bucket.delete);
-router.post('/bucket/verify',   authSession, controllers.bucket.verify);
+router.post('/bucket/verify', controllers.bucket.verify);
 
 module.exports = router
