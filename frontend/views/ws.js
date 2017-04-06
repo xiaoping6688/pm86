@@ -162,7 +162,16 @@ export default (__this) => {
       session_id: session_id
     }));
   };
-  setTimeout(ask, 1000);
+
+  socket.onopen = function () {
+    connection.send('Ping'); // Send the message 'Ping' to the server
+    setTimeout(ask, 1000);
+  };
+
+    // Log errors
+  socket.onerror = function (error) {
+    console.log('WebSocket Error ' + error);
+  };
 
   // socket.io wrapper for clean websocket
   socket.on = (function(channel, handler) {
