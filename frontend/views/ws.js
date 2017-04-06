@@ -170,7 +170,8 @@ export default (__this) => {
 
     // Log errors
   socket.onerror = function (error) {
-    console.log('WebSocket Error ' + error);
+    console.log('WebSocket Error ');
+    console.log(error);
   };
 
   // socket.io wrapper for clean websocket
