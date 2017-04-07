@@ -20,11 +20,12 @@ const StatusModel   = models.status;
 const BucketModel   = models.bucket;
 
 async function askHandler(data) {
-    // $.debug("askHandler")
+    $.debug("askHandler")
     let socket             = this;
     let publicKey          = data.public_key;
     let sessionId          = data.session_id;
     let channelName        = sessionId + ':' + publicKey;
+    $.debug(channelName);
     let bucket_ret = await BucketModel.find({'public_key': publicKey});
     let hosts = [], results = [];
     let public_key, secret_key, doc;
@@ -40,6 +41,7 @@ async function askHandler(data) {
             hosts.push(el.data.server_name);
         }
     })
+    $.debug(hosts);
     hosts.forEach(async function(item, index, arr, doc = undefined, process_exception = undefined) {
         doc = await StatusModel.all({
             'data.server_name': item,
@@ -56,7 +58,7 @@ async function askHandler(data) {
                 return ele !== null;
             });
             socket._emit(channelName, results);
-            // $.debug(channelName)
+            $.debug(results);
         }
     });
 }

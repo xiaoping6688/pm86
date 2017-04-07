@@ -41,18 +41,7 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
       if (key === 'logout') {
-        const _this = this
-        api.post({
-          url: 'account/logout',
-          data: {}
-        }).then((result) => {
-          console.log(result);
-            localStorage.setItem('email', null);
-            localStorage.setItem('user', null);
-            _this.$router.push('/login');
-        }).catch((err) => {
-          console.log(err);
-        })
+        logout(this)
       } else {
         this.$router.push(`/${key}`)
       }
@@ -62,6 +51,20 @@ export default {
     let email = localStorage.getItem('email');
     this.$set(this, 'email', email);
   }
+}
+
+function logout (_this) {
+  api.post({
+    url: 'account/logout',
+    data: {}
+  }).then((result) => {
+    console.log(result);
+      localStorage.setItem('email', null);
+      localStorage.setItem('user', null);
+      _this.$router.push('/login');
+  }).catch((err) => {
+    console.log(err);
+  })
 }
 </script>
 

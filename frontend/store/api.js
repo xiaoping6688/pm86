@@ -7,7 +7,7 @@ const currentConfig = config[isProd ? 'prod' : 'dev']
 const api_version   = 'v1';
 
 const axios = require('axios').create({
-  baseURL: `${currentConfig.base_url}/${api_version}`,
+  baseURL: `${currentConfig.base_url}/api/${api_version}`,
   timeout: 10000,
   headers: {'X-Requested-With': 'XMLHttpRequest'},
   transformResponse: [function (data) {
@@ -25,13 +25,17 @@ export const post = function (info) {
   return axios.post(`/${info.url}`, info.data);
 }
 
+export const put = function (info) {
+  return axios.put(`/${info.url}`, info.data);
+}
+
 // 获取数据
 export const fetchBuckets = () => {
   return axios({method: 'get', url: '/buckets'})
 }
 
 export const addBucket = (data) => {
-  return axios({method: 'post', url: '/bucket/create', data: data})
+  return axios({method: 'put', url: '/bucket/create', data: data})
 }
 
 export const login = (data) => {

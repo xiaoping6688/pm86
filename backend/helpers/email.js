@@ -12,7 +12,7 @@ export default function (options) {
     // bcc:      ''    //密送
     subject:     options.subject || '一封来自 PM86 的邮件',
     text:        options.text || '一封来自 PM86 的邮件',
-    html:        `'<h1>${options.text}</h1><p><img src="cid:00000001"/></p>'`,
+    html:        `<h1>${options.text}</h1><p><img src="cid:00000001"/></p>`,
     attachments: [],
   };
   mailTransport.sendMail(defaultOption)

@@ -151,10 +151,13 @@ let wsaddr = isProd ? config.prod.ws : config.dev.ws
 export default (__this) => {
   let __lags = new Date().getTime()
   let __public_key = __this.$route.params.key
-  let socket = new WebSocket('ws://' + wsaddr);
+  let socket = new WebSocket('wss://' + wsaddr);
   let sid = getCookie("connect.sid");
   let session_id = decodeURIComponent(sid).match(/s\:([^.]+)/im)[1];
   let channel = session_id + ':' + __public_key;
+  console.log(socket);
+  console.log(session_id);
+  console.log(__public_key);
   let ask = function() {
     socket.send('ask:-:-:' + JSON.stringify({
       t: new Date().getTime() - __lags,
@@ -162,7 +165,17 @@ export default (__this) => {
       session_id: session_id
     }));
   };
-  setTimeout(ask, 1000);
+
+  socket.onopen = function () {
+    console.log('Ping'); // Send the message 'Ping' to the server
+    setTimeout(ask, 1000);
+  };
+
+    // Log errors
+  socket.onerror = function (error) {
+    console.log('WebSocket Error ');
+    console.log(error);
+  };
 
   // socket.io wrapper for clean websocket
   socket.on = (function(channel, handler) {
